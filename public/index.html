@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ReviewLens — turn unstructured customer reviews into insights you can act on.">
+  <title>ReviewLens — Customer Intelligence</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233a5ee9'/%3E%3Ctext x='50%25' y='65%25' text-anchor='middle' font-size='32' font-family='Arial' font-weight='bold' fill='white'%3ER%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a class="brand" href="#overview"><span class="brand-symbol">✦</span><span>Review<span class="brand-blue">Lens</span><small>AI CUSTOMER INTELLIGENCE</small></span></a>
+      <p class="nav-group">WORKSPACE</p>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a href="#overview" class="active"><span class="nav-icon">▦</span> Overview</a>
+        <a href="#reviews"><span class="nav-icon">☷</span> Review explorer</a>
+        <a href="#products"><span class="nav-icon">⬡</span> Product insights</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-tip"><span class="tip-glow">✧</span><strong>Make feedback useful.</strong><p>Know what customers love, fix what matters, and build their trust.</p></div>
+        <div class="side-profile"><div class="avatar">RL</div><span><strong>Store workspace</strong><small>Local analytics</small></span><span class="profile-dots">···</span></div>
+      </div>
+    </aside>
+    <main class="main" id="overview">
+      <div class="topbar"><span class="crumb">Workspace <span class="slash">/</span> <strong>Overview</strong></span><div class="top-actions"><span class="live-pill"><span class="live-dot"></span> ANALYTICS DASHBOARD</span><span class="top-avatar">RL</span></div></div>
+      <div class="main-content">
+        <header class="page-heading"><div><span class="eyebrow">WELCOME TO YOUR ANALYTICS HUB <span>✦</span></span><h1>Every review has a story.<br><span>See the bigger picture.</span></h1><p>Turn customer feedback into actionable insights with AI-powered analysis.</p></div><div class="heading-art" aria-hidden="true"><span>✳</span><div class="art-card art-1">★★★★★ <small>Love the quality!</small></div><div class="art-card art-2"><span>✦</span> Insights unlocked</div></div></header>
+        <div id="modeBanner" class="mode-banner" role="status" hidden></div>
+        <section class="upload-panel panel" aria-label="Upload product reviews">
+          <div class="upload-icon">↥</div>
+          <div class="upload-copy"><h2>Bring your reviews to life</h2><p>Import your customer reviews to discover sentiment, identify trends, and find conversations worth replying to.</p><div class="upload-hint">CSV format <span>·</span> Up to 3 MB <span>·</span> Secure server-side AI</div></div>
+          <div class="upload-actions"><label class="button button-primary" for="uploadInput"><span>↑</span> Upload CSV file</label><input id="uploadInput" type="file" accept=".csv,text/csv" hidden><button class="button button-subtle" id="sampleButton">Try sample data <span>→</span></button></div>
+        </section>
+        <div id="progressBar" class="progress-box" hidden><div class="spinner"></div><div><strong>Analyzing customer feedback…</strong><p>Cleaning your file, processing reviews in batches, checking results and caching insights. This can take a little while.</p></div></div>
+        <div id="toast" class="toast" role="alert" hidden></div>
+        <div class="section-title summary-title"><div><h2>Performance at a glance</h2><p id="datasetLabel">Upload reviews to unlock your dashboard</p></div><button id="exportBtn" class="button button-outline" disabled>↓ Export insights</button></div>
+        <section class="metrics" id="metrics" aria-label="Review summary">
+          <article class="metric-card"><div class="metric-row"><span>Total analyzed</span><span class="metric-icon sky">▤</span></div><strong id="statTotal">—</strong><p><span class="metric-tag">✓</span> Unique valid reviews</p></article>
+          <article class="metric-card"><div class="metric-row"><span>Positive feedback</span><span class="metric-icon mint">♡</span></div><strong id="statPositive">—</strong><p><span class="mini-dot green"></span> <span id="positiveCount">0 positive reviews</span></p></article>
+          <article class="metric-card"><div class="metric-row"><span>Negative feedback</span><span class="metric-icon peach">↘</span></div><strong id="statNegative">—</strong><p><span class="mini-dot orange"></span> <span id="negativeCount">0 negative reviews</span></p></article>
+          <article class="metric-card"><div class="metric-row"><span>Needs a response</span><span class="metric-icon lavender">◎</span></div><strong id="statReply">—</strong><p><span class="metric-tag purple">!</span> Awaiting your attention</p></article>
+        </section>
+        <section class="dashboard-grid" aria-label="Overview insights">
+          <article class="panel sentiment-panel"><div class="panel-heading"><div><h3>Sentiment overview</h3><p>How customers feel about your products</p></div><span class="panel-icon">◷</span></div><div class="donut-area"><div class="donut" id="sentimentDonut" role="img" aria-label="Sentiment breakdown"><div class="donut-hole"><span id="donutValue">—</span><small>reviews</small></div></div><div class="donut-legend"><div><span class="legend-label"><i class="legend-dot positive"></i>Positive</span><strong id="legendPositive">—</strong></div><div><span class="legend-label"><i class="legend-dot neutral"></i>Neutral</span><strong id="legendNeutral">—</strong></div><div><span class="legend-label"><i class="legend-dot negative"></i>Negative</span><strong id="legendNegative">—</strong></div></div></div><div class="panel-note" id="agreementNote">Rating vs. sentiment agreement will appear here.</div></article>
+          <article class="panel insights-panel"><div class="panel-heading"><div><h3>Voice of the customer</h3><p>Top themes that deserve your attention</p></div><span class="panel-icon">✧</span></div><div class="insights-columns"><div><div class="insight-heading"><span class="insight-bullet issue">↘</span><strong>Top complaints</strong></div><div id="complaints" class="insight-list"><p class="empty-small">Upload data to see recurring issues.</p></div></div><div><div class="insight-heading"><span class="insight-bullet praise">↗</span><strong>What customers love</strong></div><div id="praises" class="insight-list"><p class="empty-small">Upload data to discover your strengths.</p></div></div></div></article>
+        </section>
+        <section class="panel products-panel" id="products"><div class="panel-heading"><div><h3>Product pulse</h3><p>Monitor sentiment across your product catalog</p></div><span class="small-label">PRODUCT PERFORMANCE</span></div><div id="productList" class="products-list"><div class="empty-center">Your product performance will appear here once reviews are analyzed.</div></div></section>
+        <section class="panel reviews-panel" id="reviews"><div class="panel-heading"><div><h3>Review explorer <span id="reviewCountLabel" class="count-tag">0</span></h3><p>Dig deeper into individual customer experiences</p></div><span class="small-label">ALL REVIEWS</span></div>
+          <div class="filters"><div class="search-wrap"><span>⌕</span><input id="searchFilter" type="search" placeholder="Search reviews, summaries, products…" aria-label="Search reviews"></div><select id="productFilter" aria-label="Filter by product"><option value="">All products</option></select><select id="sentimentFilter" aria-label="Filter by sentiment"><option value="">All sentiments</option><option value="positive">Positive</option><option value="neutral">Neutral</option><option value="negative">Negative</option></select><select id="topicFilter" aria-label="Filter by topic"><option value="">All topics</option><option value="quality">Quality</option><option value="delivery">Delivery</option><option value="price">Price</option><option value="packaging">Packaging</option><option value="support">Support</option><option value="size_fit">Size / fit</option><option value="other">Other</option></select><select id="statusFilter" aria-label="Filter by status"><option value="">All statuses</option><option value="analysed">Analyzed</option><option value="duplicate">Duplicate</option><option value="empty">Empty</option><option value="analysis_failed">Failed</option></select></div>
+          <div class="table-viewport"><table><thead><tr><th>REVIEW / CUSTOMER VOICE</th><th>PRODUCT</th><th>RATING</th><th>SENTIMENT</th><th>TOPICS</th><th>ACTION</th></tr></thead><tbody id="reviewRows"><tr><td class="table-empty" colspan="6">Your review results will appear here.</td></tr></tbody></table></div>
+          <div class="table-bottom"><span id="tableCount">No reviews yet</span><div class="pagination"><button id="prevPage" disabled aria-label="Previous page">←</button><span id="pageIndicator">1 / 1</span><button id="nextPage" disabled aria-label="Next page">→</button></div></div>
+        </section>
+        <footer class="footer"><span>✦ ReviewLens <span>·</span> Designed for better customer decisions</span><span>Powered by AI <span>·</span> Privacy-first analysis</span></footer>
+      </div>
+    </main>
+  </div>
+  <dialog id="replyModal" class="reply-dialog"><div class="dialog-header"><div><span class="eyebrow">CUSTOMER RELATIONSHIP</span><h3>Suggested response</h3></div><button id="closeModal" class="close-modal" aria-label="Close">×</button></div><div id="modalReview" class="quoted-review"></div><div id="modalReply" class="reply-content">Generating your response…</div><div class="dialog-actions"><button id="copyReply" class="button button-primary" disabled>Copy reply ↗</button><button id="doneModal" class="button button-outline">Done</button></div><p class="modal-disclaimer">AI suggestions should be reviewed before sending to customers.</p></dialog>
+</body>
+</html>
