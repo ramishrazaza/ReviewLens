@@ -10,10 +10,10 @@ ReviewLens turns messy ecommerce product feedback into a single actionable dashb
 
 1. Install **Python 3.10 or newer**.
 2. Clone or download this repository and open a terminal in its root.
-3. Copy `.env.example` to `.env`:
+3. Recommended: run `python configure.py` to enter your API key privately (input is hidden). This creates an untracked `.env` and enables live Gemini mode. Alternatively, copy `.env.example` to `.env`:
    - Windows PowerShell: `Copy-Item .env.example .env`
    - macOS/Linux: `cp .env.example .env`
-4. Get an API key from [Google AI Studio](https://aistudio.google.com/apikey). Edit **only your local `.env`**:
+4. Get an API key from [Google AI Studio](https://aistudio.google.com/apikey). If you skipped `python configure.py`, edit **only your local `.env`**:
 
    ```dotenv
    GEMINI_API_KEY=your_actual_gemini_key_here
@@ -31,7 +31,7 @@ ReviewLens turns messy ecommerce product feedback into a single actionable dashb
 6. Visit **http://localhost:8000**, click **Try sample data** (uses the included `reviews.csv`) or **Upload CSV file**. Review the dashboard and click **Generate reply** on a review needing attention.
 7. Upload the same file again to see **SQLite cache hits** with fewer or no AI requests.
 
-**Do not share your `.env`, Gemini key, or local `.data/` SQLite database.** Both are gitignored; the browser never calls Gemini directly. The backend binds to `127.0.0.1`, not a public interface. The SQLite database is created automatically at `.data/reviewlens.db`.
+**Do not share your `.env`, Gemini key, or local `.data/` SQLite database.** If you ever pasted your key into a chat or public message, revoke/rotate it from Google AI Studio and set the replacement privately. Both are gitignored; the browser never calls Gemini directly. The backend binds to `127.0.0.1`, not a public interface. The SQLite database is created automatically at `.data/reviewlens.db`.
 
 ### Offline UI preview (no API key required)
 
@@ -90,6 +90,7 @@ POST /api/reply -> check needs_reply -> reply cache -> Gemini on demand
 | Path | Purpose |
 |---|---|
 | `run.py` | Launches server |
+| `configure.py` | Creates a private local `.env` using a hidden key prompt |
 | `app/server.py` | HTTP endpoints, upload size restriction, same-origin static files |
 | `app/cleaning.py` | Defensive CSV parser, text cleanup, rating normalization, deduplication |
 | `app/ai.py` | Gemini request format, prompt injection boundaries, LLM validation retries and rate limiting |
