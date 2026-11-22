@@ -17,7 +17,7 @@ ReviewLens turns messy ecommerce product feedback into a single actionable dashb
 
    ```dotenv
    GEMINI_API_KEY=your_actual_gemini_key_here
-   GEMINI_MODEL=gemini-2.5-flash-lite
+   GEMINI_MODEL=gemini-3.5-flash-lite
    REVIEWLENS_DEMO_MODE=0
    PORT=8000
    ```
@@ -30,6 +30,12 @@ ReviewLens turns messy ecommerce product feedback into a single actionable dashb
 
 6. Visit **http://localhost:8000**, click **Try sample data** (uses the included `reviews.csv`) or **Upload CSV file**. Review the dashboard and click **Generate reply** on a review needing attention.
 7. Upload the same file again to see **SQLite cache hits** with fewer or no AI requests.
+
+### Gemini 404: model not available to new users
+
+If an earlier `.env` was created with `GEMINI_MODEL=gemini-2.5-flash-lite` and Gemini returns `HTTP 404` saying the model is unavailable to new users, **do not replace the API key just to fix that model error**. Stop the server, change only the `GEMINI_MODEL` value in your private `.env` to `gemini-3.5-flash-lite`, restart with `python run.py`, and upload the CSV again. `configure.py` does not overwrite an existing `.env`. Failed analysis attempts aren't cached as successful results, so they are eligible for retry on re-upload. Actual access and quotas depend on your Google AI Studio project.
+
+Google's model catalog: https://aistudio.google.com/docs/models
 
 **Do not share your `.env`, Gemini key, or local `.data/` SQLite database.** If you ever pasted your key into a chat or public message, revoke/rotate it from Google AI Studio and set the replacement privately. Both are gitignored; the browser never calls Gemini directly. The backend binds to `127.0.0.1`, not a public interface. The SQLite database is created automatically at `.data/reviewlens.db`.
 

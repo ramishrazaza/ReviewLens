@@ -22,7 +22,7 @@ def load_environment(env_path=None):
 
 load_environment()
 PORT = int(os.environ.get('PORT', '8000'))
-GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-2.5-flash-lite')
+GEMINI_MODEL = os.environ.get('GEMINI_MODEL', 'gemini-3.5-flash-lite')
 DEMO_MODE = os.environ.get('REVIEWLENS_DEMO_MODE', '0') == '1'
 DB_PATH = Path(os.environ.get('REVIEWLENS_DB_PATH', str(ROOT / '.data' / 'reviewlens.db')))
 

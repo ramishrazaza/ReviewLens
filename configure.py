@@ -13,7 +13,7 @@ def main():
     if not key or any(c in key for c in '\r\n\x00'):
         raise ValueError('An API key is required and must occupy one line.')
     data = ('GEMINI_API_KEY=' + key + '\n'
-            'GEMINI_MODEL=gemini-2.5-flash-lite\n'
+            'GEMINI_MODEL=gemini-3.5-flash-lite\n'
             'REVIEWLENS_DEMO_MODE=0\nPORT=8000\n')
     fd = os.open(str(target), os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     with os.fdopen(fd, 'w', encoding='utf-8') as file:
