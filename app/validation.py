@@ -13,7 +13,7 @@ class AnalysisValidationError(ValueError):
 def validate_analysis(value):
     if not isinstance(value, dict) or set(value) != KEYS:
         raise AnalysisValidationError('Expected exactly four analysis fields')
-    if value['sentiment'] not in SENTIMENTS:
+    if not isinstance(value['sentiment'], str) or value['sentiment'] not in SENTIMENTS:
         raise AnalysisValidationError('Invalid sentiment')
     topics = value['topics']
     if not isinstance(topics, list) or not topics or len(topics) > 7:
