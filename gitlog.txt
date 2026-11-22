@@ -1,0 +1,71 @@
+commit 6ba406e02e2e1d8a4489088b993930905df381a7
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:37:30 +0000
+
+    Offer private local Gemini API-key configuration and rotation guidance
+
+commit 3ff76a3e1b943ee805bf98d3711f93aca9c1a699
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:35:47 +0000
+
+    Capture three labelled dashboard preview screenshots
+
+commit c89e31baf6eabea0101f0e773bbb221a31c07dc2
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:35:47 +0000
+
+    Document setup, architecture, safety and testing; polish preview states
+
+commit 3e06b62fc60b8de896b5068702a6d74832114d22
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:32:02 +0000
+
+    Add twelve automated regression tests and strict response handling
+
+commit 3bad364accf01f5810d7bcec14a794814faa1318
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:31:04 +0000
+
+    Wire CSV upload, charts, filters, export and on-demand AI replies
+
+commit 2ef136abc011d8cc1812d802cfe38741a82e4c72
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:31:04 +0000
+
+    Design responsive analytics dashboard and customer insights views
+
+commit 13b61e683ae5a00c163d227610dbabc6a42febfe
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:29:12 +0000
+
+    Include complete 30-review assessment fixture with edge cases
+
+commit 79d8e73851d6bd071928fdff736015d1c904f543
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:28:55 +0000
+
+    Expose secure upload, dashboard and reply HTTP endpoints
+
+commit b3cbf44092314d79822bdfc848ede31106701f7c
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:28:55 +0000
+
+    Build analysis orchestration, offline preview and dashboard aggregation
+
+commit dd19fd8b7add8673bd93a84bebbb1f09d0e21c43
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:28:55 +0000
+
+    Implement Gemini batching, validation retries and exponential backoff
+
+commit 7f0c4691569c0f930b0ee829ca8df503b8facf40
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:28:55 +0000
+
+    Add SQLite cache and import persistence
+
+commit ae3262e038954af560a2b845504077a51ef1e172
+Author: ReviewLens Project <reviewlens-local@example.invalid>
+Date:   2026-11-22 16:28:55 +0000
+
+    Initialize project configuration and robust CSV ingestion
